@@ -10,16 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var display: UILabel!
+    var digitAlreadyTyped: Bool = false
+    
+    @IBAction func pressDigit(sender: UIButton) {
+        let digit = sender.currentTitle!
+        
+        let currentDisplay = display.text!
+        
+        if digitAlreadyTyped{
+            display.text = currentDisplay + digit
+        }else{
+            display.text = digit
+        }
+        digitAlreadyTyped  = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func selectOperation(sender: AnyObject) {
+        
+        let symbol = sender.currentTitle!
+        
+        if symbol == "÷"{
+            print("Divisão")
+        }else if symbol == "x"{
+            print("Multiplicação")
+        }else if symbol == "+"{
+            print("Soma")
+        }else if symbol == "-"{
+            print("Subtração")
+        }
+        
     }
-
-
+    
 }
 
